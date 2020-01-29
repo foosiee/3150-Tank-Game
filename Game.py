@@ -9,12 +9,16 @@ class Game:
 
         self.wn.title('Tank Battle')
         
-        self.wn.register_shape('Assets/tank.gif')
-        self.wn.register_shape('Assets/tankright.gif')
-        self.wn.register_shape('Assets/tankleft.gif')
-        self.wn.register_shape('Assets/tankdown.gif')
+        teams = ["User", "Computer"]
 
-        tank = Tank()
+        for team in teams:
+            self.wn.register_shape(f'Assets/{team}/tank.gif')
+            self.wn.register_shape(f'Assets/{team}/tankright.gif')
+            self.wn.register_shape(f'Assets/{team}/tankleft.gif')
+            self.wn.register_shape(f'Assets/{team}/tankdown.gif')
+
+        tank = Tank(teams[0])
+
         self.wn.listen()
         self.wn.onkeypress(tank.move_up, "w")
         self.wn.onkeypress(tank.move_down, 's')
@@ -25,6 +29,8 @@ class Game:
 
         while True:
             self.wn.update()
+
+
 
 g = Game()
 g.start()

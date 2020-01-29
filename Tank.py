@@ -2,18 +2,19 @@ import turtle
 from Node import Node
 
 class Tank(turtle.Turtle):
-    def __init__(self):
+    def __init__(self, team):
         super().__init__()
+        self.team = team
         self.curr_node = self.__generate_list()
 
         self.shape(self.curr_node.val)
         self.up()
 
     def __generate_list(self):
-        frontNode = Node("Assets/tank.gif")
-        rightNode = Node("Assets/tankright.gif")
-        leftNode = Node("Assets/tankleft.gif")
-        downNode = Node("Assets/tankdown.gif")
+        frontNode = Node(f"Assets/{self.team}/tank.gif")
+        rightNode = Node(f"Assets/{self.team}/tankright.gif")
+        leftNode = Node(f"Assets/{self.team}/tankleft.gif")
+        downNode = Node(f"Assets/{self.team}/tankdown.gif")
 
         frontNode.next = rightNode
         frontNode.prev = leftNode
