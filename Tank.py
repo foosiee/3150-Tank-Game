@@ -10,10 +10,10 @@ class Tank(turtle.Turtle):
         self.up()
 
     def __generate_list(self):
-        frontNode = Node("tank.gif")
-        rightNode = Node("tankright.gif")
-        leftNode = Node("tankleft.gif")
-        downNode = Node("tankdown.gif")
+        frontNode = Node("Assets/tank.gif")
+        rightNode = Node("Assets/tankright.gif")
+        leftNode = Node("Assets/tankleft.gif")
+        downNode = Node("Assets/tankdown.gif")
 
         frontNode.next = rightNode
         frontNode.prev = leftNode

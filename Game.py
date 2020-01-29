@@ -9,10 +9,10 @@ class Game:
 
         self.wn.title('Tank Battle')
         
-        self.wn.register_shape('tank.gif')
-        self.wn.register_shape('tankright.gif')
-        self.wn.register_shape('tankleft.gif')
-        self.wn.register_shape('tankdown.gif')
+        self.wn.register_shape('Assets/tank.gif')
+        self.wn.register_shape('Assets/tankright.gif')
+        self.wn.register_shape('Assets/tankleft.gif')
+        self.wn.register_shape('Assets/tankdown.gif')
 
         tank = Tank()
         self.wn.listen()
