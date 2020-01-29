@@ -2,13 +2,14 @@ import turtle
 from Node import Node
 
 class Tank(turtle.Turtle):
-    def __init__(self, team):
+    def __init__(self, team="User", start_pos=(0,0), direction=None):
         super().__init__()
         self.team = team
-        self.curr_node = self.__generate_list()
+        self.curr_node = self.__generate_list(direction)
 
         self.shape(self.curr_node.val)
         self.up()
+        self.goto(start_pos[0], start_pos[1])
 
     def move_up(self):
         if self.ycor() <= 220:
@@ -37,7 +38,7 @@ class Tank(turtle.Turtle):
     def draw(self, asset):
         self.shape(asset)
 
-    def __generate_list(self):
+    def __generate_list(self, direction):
         frontNode = Node(f"Assets/{self.team}/tank.gif")
         rightNode = Node(f"Assets/{self.team}/tankright.gif")
         leftNode = Node(f"Assets/{self.team}/tankleft.gif")
@@ -54,5 +55,11 @@ class Tank(turtle.Turtle):
 
         leftNode.next = frontNode
         leftNode.prev = downNode
-
-        return frontNode
+        if not direction or direction == "U":
+            return frontNode
+        elif direction == "R":
+            return rightNode
+        elif direction == "D":
+            return downNode
+        else:
+            return leftNode

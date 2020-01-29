@@ -17,20 +17,19 @@ class Game:
             self.wn.register_shape(f'Assets/{team}/tankleft.gif')
             self.wn.register_shape(f'Assets/{team}/tankdown.gif')
 
-        tank = Tank(teams[0])
+        user_tank = Tank(start_pos=(-349,0), direction="R")
+        computer_tank = Tank(team="Computer", start_pos=(349, 0), direction="L")
 
         self.wn.listen()
-        self.wn.onkeypress(tank.move_up, "w")
-        self.wn.onkeypress(tank.move_down, 's')
-        self.wn.onkeypress(tank.move_right, 'd')
-        self.wn.onkeypress(tank.move_left, 'a')
-        self.wn.onkeypress(tank.rotate_right, 'e')
-        self.wn.onkeypress(tank.rotate_left, 'q')
+        self.wn.onkeypress(user_tank.move_up, "w")
+        self.wn.onkeypress(user_tank.move_down, 's')
+        self.wn.onkeypress(user_tank.move_right, 'd')
+        self.wn.onkeypress(user_tank.move_left, 'a')
+        self.wn.onkeypress(user_tank.rotate_right, 'e')
+        self.wn.onkeypress(user_tank.rotate_left, 'q')
 
         while True:
             self.wn.update()
-
-
 
 g = Game()
 g.start()
