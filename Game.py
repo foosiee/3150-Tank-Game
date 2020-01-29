@@ -1,7 +1,7 @@
 import turtle
 from Tank import Tank
 
-class Screen:
+class Game:
     def start(self):
         self.wn = turtle.Screen()
         self.wn.bgcolor("white")
@@ -26,5 +26,5 @@ class Screen:
         while True:
             self.wn.update()
 
-s = Screen()
-s.start()
+g = Game()
+g.start()
