@@ -39,27 +39,28 @@ class Tank(turtle.Turtle):
         self.shape(asset)
 
     def __generate_list(self, direction):
-        frontNode = Node(f"Assets/{self.team}/tank.gif")
-        rightNode = Node(f"Assets/{self.team}/tankright.gif")
-        leftNode = Node(f"Assets/{self.team}/tankleft.gif")
-        downNode = Node(f"Assets/{self.team}/tankdown.gif")
+        front_node = Node(f"Assets/{self.team}/tank.gif")
+        right_node = Node(f"Assets/{self.team}/tankright.gif")
+        left_node = Node(f"Assets/{self.team}/tankleft.gif")
+        down_node = Node(f"Assets/{self.team}/tankdown.gif")
 
-        frontNode.next = rightNode
-        frontNode.prev = leftNode
+        front_node.next = right_node
+        front_node.prev = left_node
 
-        rightNode.next = downNode
-        rightNode.prev = frontNode
+        right_node.next = down_node
+        right_node.prev = front_node
 
-        downNode.next = leftNode
-        downNode.prev = rightNode
+        down_node.next = left_node
+        down_node.prev = right_node
 
-        leftNode.next = frontNode
-        leftNode.prev = downNode
+        left_node.next = front_node
+        left_node.prev = down_node
+        
         if not direction or direction == "U":
-            return frontNode
+            return front_node
         elif direction == "R":
-            return rightNode
+            return right_node
         elif direction == "D":
-            return downNode
+            return down_node
         else:
-            return leftNode
+            return left_node
