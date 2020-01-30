@@ -5,7 +5,9 @@ class Game:
     def start(self):
         self.wn = turtle.Screen()
         self.wn.bgcolor("white")
-        self.wn.setup(width=800, height=600)
+        self.wn.setup(width=1000, height=800)
+        self.wn.bgpic('Assets/Game/background.gif')
+
 
         self.wn.title('Tank Battle')
         

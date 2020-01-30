@@ -4,19 +4,23 @@ from Node import Node
 class Tank(turtle.Turtle):
     def __init__(self, team="User", start_pos=(0,0), direction=None):
         super().__init__()
+        self.color = 'red' if team == 'Computer' else 'green'
         self.team = team
         self.curr_node = self.__generate_list(direction)
-
+        self.coords = [0,0] # could abstract more lines 10-13
+        self.health = 100 #100 = max health 0 = dead
+        self.id = 0 # not sure what conditonal to use yet
+        self.active = True
         self.shape(self.curr_node.val)
         self.up()
         self.goto(start_pos[0], start_pos[1])
 
     def move_up(self):
-        if self.ycor() <= 220:
+        if self.ycor() <= 290:
             self.sety(self.ycor()+60)
 
     def move_down(self):
-        if self.ycor() >= -220:
+        if self.ycor() >= -290:
             self.sety(self.ycor()-60)
 
     def move_left(self):
@@ -24,7 +28,7 @@ class Tank(turtle.Turtle):
             self.setx((self.xcor()-60))
 
     def move_right(self):
-        if self.xcor() <= 350:
+        if self.xcor() <= 380:
             self.setx((self.xcor()+60))
 
     def rotate_right(self):
