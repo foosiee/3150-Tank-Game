@@ -9,7 +9,7 @@ class Tank(turtle.Turtle):
         self.curr_node = self.__generate_list(direction)
         self.coords = [0,0] # could abstract more lines 10-13
         self.health = 100 #100 = max health 0 = dead
-        self.id = 0 # not sure what conditonal to use yet
+        self.id = 0 # not sure what conditonal to use yet maybe a uuid
         self.active = True
         self.shape(self.curr_node.val)
         self.up()
