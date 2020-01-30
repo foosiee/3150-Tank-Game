@@ -4,7 +4,7 @@ from Tank import Tank
 class Game:
     def start(self):
         self.wn = turtle.Screen()
-        self.wn.bgcolor("white")
+        self.wn.bgcolor("white") #can remove probs
         self.wn.setup(width=1000, height=800)
         self.wn.bgpic('Assets/Game/background.gif')
 
