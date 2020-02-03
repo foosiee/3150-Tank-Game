@@ -1,4 +1,5 @@
 import turtle
+from Utilites import get_filename
 from Node import Node
 
 class Tank(turtle.Turtle):
@@ -11,9 +12,11 @@ class Tank(turtle.Turtle):
         self.health = 100 #100 = max health 0 = dead
         self.id = 0 # not sure what conditonal to use yet maybe a uuid
         self.active = True
-        self.shape(self.curr_node.val)
+        self.draw(self.curr_node.val)
         self.up()
         self.goto(start_pos[0], start_pos[1])
+
+        # X and Y positions are inheirted from turtle.Turtle
 
     def move_up(self):
         if self.ycor() <= 290:
@@ -43,10 +46,10 @@ class Tank(turtle.Turtle):
         self.shape(asset)
 
     def __generate_list(self, direction):
-        front_node = Node(f"Assets/{self.team}/tank.gif")
-        right_node = Node(f"Assets/{self.team}/tankright.gif")
-        left_node = Node(f"Assets/{self.team}/tankleft.gif")
-        down_node = Node(f"Assets/{self.team}/tankdown.gif")
+        front_node = Node(get_filename(f"../Assets/{self.team}/tank.gif"))
+        right_node = Node(get_filename(f"../Assets/{self.team}/tankright.gif"))
+        left_node = Node(get_filename(f"../Assets/{self.team}/tankleft.gif"))
+        down_node = Node(get_filename(f"../Assets/{self.team}/tankdown.gif"))
 
         front_node.next = right_node
         front_node.prev = left_node

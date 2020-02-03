@@ -1,23 +1,23 @@
 import turtle
 from Tank import Tank
+from Utilites import get_filename
 
 class Game:
     def start(self):
         self.wn = turtle.Screen()
         self.wn.bgcolor("white") #can remove probs
         self.wn.setup(width=1000, height=800)
-        self.wn.bgpic('Assets/Game/background.gif')
 
-
+        self.wn.bgpic(get_filename('../Assets/Game/background.gif'))
         self.wn.title('Tank Battle')
         
         teams = ["User", "Computer"]
 
         for team in teams:
-            self.wn.register_shape(f'Assets/{team}/tank.gif')
-            self.wn.register_shape(f'Assets/{team}/tankright.gif')
-            self.wn.register_shape(f'Assets/{team}/tankleft.gif')
-            self.wn.register_shape(f'Assets/{team}/tankdown.gif')
+            self.wn.register_shape(get_filename(f'../Assets/{team}/tank.gif'))
+            self.wn.register_shape(get_filename(f'../Assets/{team}/tankright.gif'))
+            self.wn.register_shape(get_filename(f'../Assets/{team}/tankleft.gif'))
+            self.wn.register_shape(get_filename(f'../Assets/{team}/tankdown.gif'))
 
         user_tank = Tank(start_pos=(-349,0), direction="R")
         computer_tank = Tank(team="Computer", start_pos=(349, 0), direction="L")
