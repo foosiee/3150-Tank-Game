@@ -1,7 +1,6 @@
 import turtle
 from Tank import Tank
 from TankManager import TankManager
-from Sound import Sound
 from Utilites import get_filename
 
 class Game:
@@ -46,7 +45,7 @@ class Game:
         self.wn.onkeypress(user_tank.rotate_right, 'e')
         self.wn.onkeypress(user_tank.rotate_left, 'q')
         self.wn.onkeypress(user_tank.aim_bot, 'a')
-        
+
         i = 0
         while True:
             self.wn.update()
