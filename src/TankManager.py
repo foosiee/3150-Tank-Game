@@ -1,4 +1,4 @@
-from Utilites import get_distance
+from Utilites import *
 
 class TankManager:
     def __init__(self):
@@ -11,7 +11,7 @@ class TankManager:
         s = ""
         for t in self.tanks:
             if t != tank:
-                s += str(get_distance(tank, t)) + " "
+                s += str(get_distance(tank, t)) + " " + str(get_angle(tank, t)) + " "
         print(s)
 
     def get_closest_tank(self, tank):
