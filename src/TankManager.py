@@ -11,7 +11,10 @@ class TankManager:
         s = ""
         for t in self.tanks:
             if t != tank:
-                s += str(get_distance(tank, t)) + " " + str(get_angle(tank, t)) + " "
+                distance = get_distance(tank, t)
+                angle = get_angle(tank, t)
+                temp_s = f"Distance: {distance}, Angle: {angle} \n"
+                s += temp_s
         print(s)
 
     def get_closest_tank(self, tank):
