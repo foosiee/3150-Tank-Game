@@ -76,6 +76,6 @@ class Tank(turtle.Turtle):
             self.sprite = self.sprites.get_left_sprite()
         else:
             self.sprite = self.sprites.get_right_sprite()
-
-        self.draw(self.sprite)
+        
         self.disabled = False
+        self.draw(self.sprite)
