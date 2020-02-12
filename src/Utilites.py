@@ -1,5 +1,6 @@
 import os
 import math
+import random
 
 def get_filename(relpath):
     dir = os.path.dirname(__file__)
@@ -9,7 +10,10 @@ def get_distance(tank, tank1):
     return math.sqrt((tank1.xcor()-tank.xcor())**2 + (tank1.ycor()- tank.ycor())**2)
 
 def get_angle(tank, tank1):
-    return math.degrees(math.asin(abs(tank1.ycor() - tank.ycor())/(abs(get_distance(tank,tank1)))))
+    try:
+        return math.degrees(math.asin(abs(tank1.ycor() - tank.ycor())/(abs(get_distance(tank,tank1)))))
+    except:
+        return 0
 
 def merge_sort(tank_arr, tank):
     if len(tank_arr) > 1:
@@ -41,3 +45,12 @@ def merge_sort(tank_arr, tank):
                 tank_arr[k] = right_half[j]
                 j+=1
                 k+=1
+
+def get_random_position(bounds):
+    x_bounds = bounds[0]
+    y_bounds = bounds[1]
+
+    random_x = random.randint(-x_bounds, x_bounds)
+    random_y = random.randint(-y_bounds, y_bounds)
+
+    return random_x, random_y
