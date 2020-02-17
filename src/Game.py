@@ -1,7 +1,7 @@
 import turtle
 from Tank import Tank
 from TankManager import TankManager
-from Utilites import get_filename
+from Utilites import get_filename, get_random_position
 
 class Game:
     def start(self):
@@ -22,19 +22,21 @@ class Game:
 
         manager = TankManager()
 
+        bounds = (400, 400)
+
         user_tank = Tank(start_pos=(-349,0), direction="R", manager=manager)
         manager.add_tank(user_tank)
 
-        computer_tank = Tank(team="Computer", start_pos=(349, 250), direction="L", manager=manager, id=1)
+        computer_tank = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=1)
         manager.add_tank(computer_tank)
 
-        computer_tank1 = Tank(team="Computer", start_pos=(-349, 250), direction="L", manager=manager, id=2)
+        computer_tank1 = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=2)
         manager.add_tank(computer_tank1)
 
-        computer_tank2 = Tank(team="Computer", start_pos=(-349, -250), direction="L", manager=manager, id=3)
+        computer_tank2 = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=3)
         manager.add_tank(computer_tank2)
 
-        computer_tank3 = Tank(team="Computer", start_pos=(349, -250), direction="L", manager=manager, id=4)
+        computer_tank3 = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=4)
         manager.add_tank(computer_tank3)
 
         self.wn.listen()

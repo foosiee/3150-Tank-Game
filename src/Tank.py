@@ -60,8 +60,8 @@ class Tank(turtle.Turtle):
     def aim_bot(self):
         self.disabled = True
         closest_tank = self.manager.get_closest_tank(self)
-        diff_x = abs(closest_tank.xcor()) - abs(self.xcor())
-        diff_y = abs(closest_tank.ycor()) - abs(self.ycor())
+        diff_x = abs(closest_tank.xcor() - self.xcor())
+        diff_y = abs(closest_tank.ycor() - self.ycor())
 
         if diff_x < diff_y:
             self.goto(closest_tank.xcor(),self.ycor())
@@ -76,6 +76,6 @@ class Tank(turtle.Turtle):
             self.sprite = self.sprites.get_left_sprite()
         else:
             self.sprite = self.sprites.get_right_sprite()
-
-        self.draw(self.sprite)
+        
         self.disabled = False
+        self.draw(self.sprite)
