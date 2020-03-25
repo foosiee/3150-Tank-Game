@@ -9,9 +9,10 @@ class Grid:
         x = -300
         y = 400
         for _ in range(7):
+            arr = []
             y-=100
-            if x != -300:
-                x = -300
             for _ in range(7):
-                self.grid.append(GridNode((x,y)))
+                arr.append(GridNode((x,y)))
                 x+=100
+            x = -300
+            self.grid.append(arr)
