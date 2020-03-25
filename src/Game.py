@@ -24,7 +24,7 @@ class Game:
 
         bounds = (400, 400)
 
-        user_tank = Tank(start_pos=(-349,0), direction="R", manager=manager)
+        user_tank = Tank(start_pos=(300,300), direction="R", manager=manager)
         manager.add_tank(user_tank)
 
         computer_tank = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=1)
