@@ -2,12 +2,14 @@ import turtle
 from Tank import Tank
 from TankManager import TankManager
 from Utilites import get_filename, get_random_position
+from Grid import Grid
 
 class Game:
     def start(self):
+        x = Grid()
         self.wn = turtle.Screen()
         self.wn.bgcolor("white") #can remove probs
-        self.wn.setup(width=1000, height=800)
+        self.wn.setup(width=800, height=800)
 
         self.wn.bgpic(get_filename('../Assets/Game/background.gif'))
         self.wn.title('Tank Battle')
