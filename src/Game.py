@@ -6,7 +6,7 @@ from Grid import Grid
 
 class Game:
     def start(self):
-        x = Grid()
+        grid = Grid()
         self.wn = turtle.Screen()
         self.wn.bgcolor("white") #can remove probs
         self.wn.setup(width=800, height=800)
@@ -24,21 +24,21 @@ class Game:
 
         manager = TankManager()
 
-        bounds = (400, 400)
+        bounds = (6, 6)
 
-        user_tank = Tank(start_pos=(300,300), direction="R", manager=manager)
+        user_tank = Tank(start_pos=(0,6), direction="R", manager=manager, grid=grid)
         manager.add_tank(user_tank)
 
-        computer_tank = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=1)
+        computer_tank = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=1, grid=grid)
         manager.add_tank(computer_tank)
 
-        computer_tank1 = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=2)
+        computer_tank1 = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=2, grid=grid)
         manager.add_tank(computer_tank1)
 
-        computer_tank2 = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=3)
+        computer_tank2 = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=3, grid=grid)
         manager.add_tank(computer_tank2)
 
-        computer_tank3 = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=4)
+        computer_tank3 = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=4, grid=grid)
         manager.add_tank(computer_tank3)
 
         self.wn.listen()
@@ -48,13 +48,14 @@ class Game:
         self.wn.onkeypress(user_tank.move_left, 'Left')
         self.wn.onkeypress(user_tank.rotate_right, 'e')
         self.wn.onkeypress(user_tank.rotate_left, 'q')
-        self.wn.onkeypress(user_tank.aim_bot, 'a')
+        #self.wn.onkeypress(user_tank.aim_bot, 'a')
 
         i = 0
         while True:
             self.wn.update()
             if not i % 250:
-                manager.spy(user_tank)
+                pass
+                #manager.spy(user_tank)
             i+=1
 
 g = Game()
