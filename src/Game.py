@@ -23,22 +23,23 @@ class Game:
             self.wn.register_shape(get_filename(f'../Assets/{team}/tankdown.gif'))
 
         manager = TankManager()
+        manager.set_grid(grid)
 
         bounds = (6, 6)
 
-        user_tank = Tank(start_pos=(0,6), direction="R", manager=manager, grid=grid)
+        user_tank = Tank(start_pos=(0,6), direction="R", manager=manager)
         manager.add_tank(user_tank)
 
-        computer_tank = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=1, grid=grid)
+        computer_tank = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=1)
         manager.add_tank(computer_tank)
 
-        computer_tank1 = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=2, grid=grid)
+        computer_tank1 = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=2)
         manager.add_tank(computer_tank1)
 
-        computer_tank2 = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=3, grid=grid)
+        computer_tank2 = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=3)
         manager.add_tank(computer_tank2)
 
-        computer_tank3 = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=4, grid=grid)
+        computer_tank3 = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=4)
         manager.add_tank(computer_tank3)
 
         self.wn.listen()
