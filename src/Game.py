@@ -6,7 +6,7 @@ from Grid import Grid
 
 class Game:
     def start(self):
-        x = Grid()
+        grid = Grid()
         self.wn = turtle.Screen()
         self.wn.bgcolor("white") #can remove probs
         self.wn.setup(width=800, height=800)
@@ -23,10 +23,11 @@ class Game:
             self.wn.register_shape(get_filename(f'../Assets/{team}/tankdown.gif'))
 
         manager = TankManager()
+        manager.set_grid(grid)
 
-        bounds = (400, 400)
+        bounds = (6, 6)
 
-        user_tank = Tank(start_pos=(300,300), direction="R", manager=manager)
+        user_tank = Tank(start_pos=(0,6), direction="R", manager=manager)
         manager.add_tank(user_tank)
 
         computer_tank = Tank(team="Computer", start_pos=get_random_position(bounds), direction="L", manager=manager, id=1)
@@ -48,13 +49,14 @@ class Game:
         self.wn.onkeypress(user_tank.move_left, 'Left')
         self.wn.onkeypress(user_tank.rotate_right, 'e')
         self.wn.onkeypress(user_tank.rotate_left, 'q')
-        self.wn.onkeypress(user_tank.aim_bot, 'a')
+        #self.wn.onkeypress(user_tank.aim_bot, 'a')
 
         i = 0
         while True:
             self.wn.update()
             if not i % 250:
-                manager.spy(user_tank)
+                pass
+                #manager.spy(user_tank)
             i+=1
 
 g = Game()

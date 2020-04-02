@@ -9,6 +9,9 @@ class Tank(turtle.Turtle):
         self.manager = manager
         self.color = 'red' if team == 'Computer' else 'green'
         self.team = team
+        self.grid = manager.get_grid()
+        self.gridX = start_pos[0]
+        self.gridY = start_pos[1]
 
         self.sprites = Sprites(team, direction)
         self.sprite = self.sprites.get_curr_sprite()
@@ -20,29 +23,49 @@ class Tank(turtle.Turtle):
 
         self.draw(self.sprite)
         self.up()
-        self.goto(start_pos[0], start_pos[1])
+        self.move(self.gridX, self.gridY)
 
         self.disabled = False
 
+    def is_inbounds(self, x, y):
+        return x >= 0 and x < len(self.grid[0]) and y >=0 and y < len(self.grid)
+
+    def set_grid_coords(self, x, y):
+        self.set_gridX(x)
+        self.set_gridY(y)
+
+    def set_gridX(self, x):
+        self.gridX = x
+
+    def set_gridY(self, y):
+        self.gridY = y
+
+    def move(self, x, y):
+        if self.is_inbounds(x, y):
+            coords = self.grid.get_coords(x,y)
+            self.goto(coords)
+            self.set_grid_coords(x, y)
+            self.manager.update_tank_on_grid(self)
+
     def move_up(self):
         if not self.disabled:
-            if self.ycor() <= 290:
-                self.sety(self.ycor()+60)
+            newY = self.gridY - 1
+            self.move(self.gridX, newY)
 
     def move_down(self):
         if not self.disabled:
-            if self.ycor() >= -290:
-                self.sety(self.ycor()-60)
+            newY = self.gridY + 1
+            self.move(self.gridX, newY)
 
     def move_left(self):
         if not self.disabled:
-            if self.xcor() > -350:
-                self.setx((self.xcor()-60))
+            newX = self.gridX - 1
+            self.move(newX, self.gridY)
 
     def move_right(self):
         if not self.disabled:
-            if self.xcor() <= 380:
-                self.setx((self.xcor()+60))
+            newX = self.gridX + 1
+            self.move(newX, self.gridY)
 
     def rotate_right(self):
         if not self.disabled:

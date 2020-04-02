@@ -50,7 +50,7 @@ def get_random_position(bounds):
     x_bounds = bounds[0]
     y_bounds = bounds[1]
 
-    random_x = random.randint(-x_bounds, x_bounds)
-    random_y = random.randint(-y_bounds, y_bounds)
+    random_x = random.randint(0, x_bounds)
+    random_y = random.randint(0, y_bounds)
 
     return random_x, random_y
